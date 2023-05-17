@@ -140,4 +140,49 @@ array[0] = startNum;
 console.log(array);
 
 //insert element at nth position
+const pos = 2;
+const addNum = 15;
+
+if(pos <= 0 || pos > array.length){
+  console.log("incorrect position");
+}
+else{
+  for(let index = array.length; index>=pos; index--){
+    array[index] = array[index-1];
+  }
+  array[pos] = addNum;
+}
+console.log(array);
+
+//deletion
+let arrayDeletion = [];
+arrayDeletion.push(2);
+arrayDeletion.push(3);
+arrayDeletion.push(5);
+arrayDeletion.push(7);
+arrayDeletion.push(11);
+arrayDeletion.push(13);
+arrayDeletion.push(17);
+
+//deletion at end
+arrayDeletion.length = arrayDeletion.length-1;
+console.log(arrayDeletion); 
+
+//deletion at start
+for(let index=1; index<= arrayDeletion.length-1; index++){
+  arrayDeletion[index] = arrayDeletion[index+1];
+}
+
+console.log(arrayDeletion);
+
+//deletion at nth position
+if(pos < 0 || pos >= arrayDeletion.length){
+  console.log("incorrect position");
+}
+else {
+  for(let i=pos; i<=arrayDeletion.length-1; i++){
+    arrayDeletion[i] = arrayDeletion[i+1];
+  }
+  console.log(arrayDeletion);
+}
 
