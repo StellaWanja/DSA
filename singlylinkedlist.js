@@ -13,7 +13,7 @@ class LinkedList{
         this.size = 0;
     }
 
-    //insert first node
+    //insert first node - O(1)
     insertFirstNode(data){
         let newNode = new Node(data);
         if(this.head === null){
@@ -27,7 +27,7 @@ class LinkedList{
         }
     }
 
-    //insert last node
+    //insert last node - o(1)
     insertLastNode(data){
         let newNode = new Node(data);
         let temp ;
@@ -44,10 +44,11 @@ class LinkedList{
         }
     } 
 
-    //imsert at nth index
+    //insert at nth index - O(1)
+    //ask if position starts at 0 or 1
     insertAtNthPosition(data, index){
         let newNode = new Node(data);
-        if(index < 0){
+        if(index < 0 || index > this.size){
             console.log("Invalid");
         }
         else if(index === 0 && this.head === null){
@@ -65,7 +66,7 @@ class LinkedList{
         }
     }
 
-    //get at index
+    //get at index - O(n)
     getAtIndex(index){
         let temp = this.head;
         let count = 0;
@@ -80,18 +81,18 @@ class LinkedList{
        return null;
     }
 
-    //remove at start
+    //remove at start - O(1)
     removeAtStart(){
         let temp = this.head;
         this.head = temp.next;
         temp.next = null;
     }
     
-    //remove at end
+    //remove at end - O(n)
     removeArEnd(){
         let temp = this.head;
 
-        if(this.head == null){
+        if(this.head === null){
             console.log("invalid");
         }
         else if(this.head.next === null){
@@ -104,15 +105,15 @@ class LinkedList{
         }
     }
 
-    //remove at index
+    //remove at index - 0(n)
     removeAtIndex(index){
-        if(index < 0 && index > this.size){
+        if(index < 0 || index > this.size){
             return null;
         }
-        else if (index = 0 && this.head !== null){
+        else if (index === 0 && this.head !== null){
             let del = this.head;
             this.head = del.next;
-            del = null;
+            del.next = null;
         } else {
             let temp = this.head;
             let count = 0;
