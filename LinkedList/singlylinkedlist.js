@@ -1,4 +1,5 @@
 //node class - containsnode data and pointer
+//constructor -  used to create new objects
 class Node{
     constructor(data, next = null){
         this.data = data;
@@ -137,7 +138,7 @@ class LinkedList{
     //reverse a linked list
     reverse(){
         let previousNode, currentNode, nextNode;
-        previousNode = 0;
+        previousNode = null;
         currentNode = this.head;
         nextNode = this.head;
         while(nextNode !== null){

@@ -88,3 +88,11 @@ function sumOfDigits(num){
     //eg 142 => 1,4,2 => 7
     return (num % 10) + sumOfDigits((num%10 - 1));
 }
+
+const mergeSort = (arr) => {
+    if(arr.length <= 1) return arr;
+    else{
+        let mid = Math.floor(arr.length/2);
+        
+    }
+} 

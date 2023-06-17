@@ -6,134 +6,105 @@ class BinaryTreeNode {
   }
 }
 
-//A Tree Data Structure can be traversed in following ways:
-//1. Depth First Search or DFS
-//   a) Inorder Traversal
-//   b) Preorder Traversal
-//   c) Postorder Traversal
-//2. Level Order Traversal or Breadth First Search or BFS
-//3. Boundary Traversal
-//4. Diagonal Traversal
+//A binary search tree(BST) is sorted
+// so values on the left are less than root node
+// while values on the right are greater than the root node
+// and the same logic applies to the subtrees
+// so while inserting, finding or deletion in a BST, the logic still applies in the same way
 
-//DEPTH FIRST TRAVERSAL
-// Traverse from root to left node and all its children before moving to the right node
-//1. Iteration method for depth first traversal
-// uses stack data structure style to traverse - LIFO
-//           A
-//          /  \
-//         B    C
-//       /  \    \
-//      D   E     F
-// First A will be pushed to the stack and popped out
-// Then B and C will be pushed to the stack in the order of C and B(right node then left node)
-// B will be popped out, then traverse its children D and E
-// E will be pushed to stack first then D, and pop out D then E respectively
-// then go back to remaining C in the stack and pop it out
-// then traverse to F and pop
-// So traversal in depth first = A,B,D,E,C,F
-const depthFirstTraversal = (root) => {
-  if (root === null) return [];
+//BINARY SEARCH TREE INSERTION
+//1. Create a node object that will store the data
+//2. Check BST for a root node, if none exists set node as root
+//3. Traverse node to put data value less than root node to left and the greater one to right
+// The node should have nodes at the left less than the current node and at the right greater than the current node
+//eg             11
+//              /  \
+//             7
+//            / \
+//           5   9
+//              / \
+//             8   10
 
-  const result = [];
-  const stack = [root]; // the stack stores the values of a level, with push and pop based on whether its left or right
-  while (stack.length > 0) {
-    const current = stack.pop(); //pop out current value
-    result.push(current.data); //and push to result array
-
-    //if node has children, push to stack right node first then left node
-    // to allow for popping left node first before right node since stack will hold values of same level
-    if (current.right) stack.push(current.right);
-    if (current.left) stack.push(current.left);
+//iteratively
+class BSTInsertIterate{
+  constructor(){
+    this.root = null;
   }
-  return result;
-};
+  insert(val){
+    let newNode = new BinaryTreeNode(val);
+    if(this.root === null){
+      this.root = newNode;
+      return this;
+    } else {
+      let current = this.root;
+      while(true){
+        //check for duplicates as it would lead to infinite loop
+        if(current.data === val) return undefined;
+        //loop through left first
+        if(val < current.data){
+          //insert to the left side if there is no node
+          if(current.left === null){
+            current.left = newNode;
+            return this;
+          } else {
+            //continue looping to the left
+            current = current.left;
+          }
+          //loop through the right
+        } else if(val > current.data){
+          //insert to the right side if there is no node
+          if(current.right === null){
+            current.right = newNode;
+             return this;
+          } else {
+            //continue looping to the right
+            current = current.right;
+          }
+        }
+      }
+    }
+  }
+}
 
-//2. depth first traveral using recursion
-const depthFirstTraversalRecursion = (root) => {
-  if (root === null) return [];
-  const leftValues = depthFirstTraversalRecursion(root.left);
-  const rightValues = depthFirstTraversalRecursion(root.right);
-  return [root.data, ...leftValues, ...rightValues];
-};
-
-//INORDER TRAVERSAL (Left, Root, Right)
-// Traverse from the left subtree to the root then to the right subtree
-//           A
-//          /  \
-//         B    C
-//       /  \  / \
-//      D   E  F  G
-//Traversal = D,B,E,A,F,C,G
-//used to get nodes in non-decreasing order, can be reversed to get in non-increasing order
-const inOrder = (root) => {
-  if(root === null) return;
-  inOrder(root.left);
-  console.log(root.data);
-  inOrder(root.right);
+//using recursion
+class BSTInsertionRecursion {
+  constructor() {
+    this.root = null;
+  }
+  insert(val) {
+    let newNode = new Node(val);
+    //insert node if tree is empty
+    if (this.root === null) {
+      this.root = newNode;
+    } else {
+        this.insertNode(this.root, newNode);
+    }
+  }
+  insertNode(root, newNode){
+    //insert to left
+    if(newNode.data < root.data){
+        //no left node exists
+        if(root.left === null){
+            root.left = newNode;
+        } else {
+            //recursively move to the next left node
+            this.insertNode(root.left, newNode);
+        }
+    } else {
+        //no right node exists
+        if(root.right === null){
+            root.right = newNode;
+        } else {
+            //recursively move to the next right node
+            this.insertNode(root.right, newNode);
+        }
+    }
+  }
 }
 
 
-//PREORDER TRAVERSAL (Root, Left, Right) - similar to the DFS methods shown above
-// Traverse from the root to the left subtree then to the right subtree
-//           A
-//          /  \
-//         B    C
-//       /  \  / \
-//      D   E  F  G
-//Traversal = A,B,D,E,C,F,G
-//used to create a copy of the tree and to get prefix expressions on an expression tree
-const preOrderTraversal = (root) => {
-  if (root === null) return [];
-  console.log(root.data);
-  preOrderTraversal(root.left);
-  preOrderTraversal(root.right);
-  //return [root.data, ...leftValues, ...rightValues];
-};
-
-//POSTORDER TRAVERSAL (Left, Right, Root)
-// Traverse from the left subtree to the right subtree then to the root
-//           A
-//          /  \
-//         B    C
-//       /  \  / \
-//      D   E  F  G
-//Traversal = D,E,B,F,G,C,A
-//used to delete the tree and to get the postfix expression of an expression tree
-const postOrder = (root) => {
-  if(root === null) return;
-  postOrder(root.left);
-  postOrder(root.right);
-  console.log(root.data);
-}
 
 
-//BREADTH FIRST TRAVERSAL
-// Traverse across first before traversing to the children
-//1. Iteration method for breadth first traversal
-// uses queue data structure to traverse - FIFO
-//           A
-//          /  \
-//         B    C
-//       /  \    \
-//      D   E     F
-// add A to queue and remove
-// then traverse and add B and C to the queue
-// remove B and C from the queue respectively
-// add D, E and F and remove them respectively
-// will be a,b,c,d,e,f
-const breadthFirstTraversal = (root) => {
-  if (root === null) return [];
-  const result = [];
-  const queue = [root];
-  while (queue.length > 0) {
-    const current = queue.shift();
-    result.push(current.data);
-    if (current.left !== null) queue.push(current.left);
-    if (current.right !== null) queue.push(current.right);
-  }
-  return result;
-};
-//BFS has no recursion since recursion requires using a call stack (stack dsa)
 
 //BOUNDARY TRAVERSAL
 // Traverse in a clockwise or anticlockwise manner throughout the tree
@@ -321,58 +292,14 @@ const maxPath = (root) => {
   return root.data + maxChild;
 };
 
-//BINARY SEARCH TREE INSERTION
-//1. Create a node object that will store the data
-//2. Check BST for a root node, if none exists set node as root
-//3. Traverse node to put data value less than root node to left and the greater one to right
-// The node should have nodes at the left less than the current node and at the right greater than the current node
-//eg             11
-//              /  \
-//             7
-//            / \
-//           5   9
-//              / \
-//             8   10
-class BSTInsertion {
-  constructor() {
-    this.root = null;
-  }
-  insert(val) {
-    let newNode = new Node(val);
-    //insert node if tree is empty
-    if (this.root === null) {
-      this.root = newNode;
-    } else {
-        this.insertNode(this.root, newNode);
-    }
-  }
-  insertNode(root, newNode){
-    //insert to left
-    if(newNode.data < root.data){
-        //no left node exists
-        if(root.left === null){
-            root.left = newNode;
-        } else {
-            //recursively move to the next left node
-            this.insertNode(root.left, newNode);
-        }
-    } else {
-        //no right node exists
-        if(root.right === null){
-            root.right = newNode;
-        } else {
-            //recursively move to the next right node
-            this.insertNode(root.right, newNode);
-        }
-    }
-  }
-}
-
 // BINARY SEARCH TREE DELETION OF A NODE
 // In deletion with a node that has 2 children: 2 methods
 //Method 1: find min in the right subtree, copy the value in the targetted node and delete duplicate
 //Method 2: find max in the left subtree, copy the value in the targetted node and delete duplicate
 class BSTDeletion{
+  constructor() {
+    this.root = null;
+  }
   removeNode(root, value){
     if (root === null) return null;
     else if(value < root.data){
