@@ -17,7 +17,7 @@ class BinarySearchTreeFind{
     let current = this.root;
     let foundVal = false;
     //loop through while root is not null and foundVal has not been found
-    while(current !== null && !foundVal){
+    while(current !== null && foundVal){
       //loop through left
       if(val < current.data){
         current = current.left;

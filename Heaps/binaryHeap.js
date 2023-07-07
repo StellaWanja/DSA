@@ -27,3 +27,8 @@
 // so left child of 10 -> (2*1+1)=3(17 in index 3)
 // right child of 10 -> (2*1+2)=4(19 in index 4)
 // parent of 30 -> ((5-1)/2)=2(9 in index 2)
+
+//best case
+//insertion and deletion -> O(log n)
+//search -> O(log n)
+
