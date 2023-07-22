@@ -176,6 +176,23 @@ const inOrder = (root) => {
     console.log(root.data);
     inOrder(root.right);
 }
+//or
+var inorderTraversal = function(root) {
+  let stack = [];
+  let res = [];
+  let current= root;
+
+  while (current || stack.length !== 0){
+      while(current){
+          stack.push(current);
+          current = current.left;
+      }
+      current = stack.pop();
+      res.push(current.val);
+      current = current.right;
+  }
+  return res;
+};
 
 //BOUNDARY TRAVERSAL
 // Traverse in a clockwise or anticlockwise manner throughout the tree

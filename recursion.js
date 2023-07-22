@@ -1,6 +1,7 @@
 //invoke same function with a different input until you reach the base case
 // base case - the condition when the recursion ends
 // essential parts of a recursion: base case and using different input
+//always think about thee base case and the recursive case first
 
 //ISSUES THAT COULD COME UP
 // 1. No base case
@@ -89,10 +90,3 @@ function sumOfDigits(num){
     return (num % 10) + sumOfDigits((num%10 - 1));
 }
 
-const mergeSort = (arr) => {
-    if(arr.length <= 1) return arr;
-    else{
-        let mid = Math.floor(arr.length/2);
-        
-    }
-} 

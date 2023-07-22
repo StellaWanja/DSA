@@ -21,3 +21,12 @@ const binarySearch = (arr, val) => {
 
 console.log(binarySearch([1,3,5,7,9,10,13,15,19,27], 11));
 
+//Recursive
+const binarySearchRec = (arr, val, start=0, end=arr.length-1) => {
+    let mid = Math.floor((start+end)/2);
+    if(start > end) return -1;
+    else if(arr[mid] > val) return binarySearch(arr,val,start,mid-1);
+    else if(arr[mid] < val)  return binarySearch(arr,val,mid+1,end);
+    else return mid;
+}
+

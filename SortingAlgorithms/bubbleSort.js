@@ -7,9 +7,10 @@
 // 4th swap -> [1,2,3,4,5]
 
 //best case -> O(n)
-//worst case -> O(n^2)
+//worst case -> O(n^2) eg in a reverse sorted array
 // space complexity -> O(1)
 //is stable
+
 
 function swap(arr, idx1, idx2){
     var temp = arr[idx1];
