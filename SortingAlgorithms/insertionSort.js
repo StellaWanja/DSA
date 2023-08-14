@@ -8,6 +8,7 @@
 // best case -> O(n) - sorting data that is in ascending order eg [1,2,3,4,-1]
 //space complexity -> O(1)
 //best used when new data keeps coming up and you need the data sorted
+// also best used when data is partially sorted
 
 function insertionSort(arr) {
   //compare num to the one before it

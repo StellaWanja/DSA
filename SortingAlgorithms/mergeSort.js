@@ -58,3 +58,9 @@ function mergeSort(arr){
 }
 
 console.log(mergeSort([1,5,3,4,2]))
+
+
+
+
+
+

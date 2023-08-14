@@ -2,33 +2,39 @@
 // base case - the condition when the recursion ends
 // essential parts of a recursion: base case and using different input
 //always think about thee base case and the recursive case first
+//uses a call stack(LIFO technique)
+// call stack -> a stack that holds info about diffnt active functions, return address, local var etc
 
 //ISSUES THAT COULD COME UP
 // 1. No base case
 // 2. Forgetting to return or returning the wrong thing
 // 3. Stack overflow - recursion not stopping
-function countDown(num){
-    //base case
-    if(num <= 0){
-        console.log("all done!");
-        return; // stops iteration
-    }
-    console.log(num);
-    num--;
-    countDown(num);
-}
 
-function sumRange(num){
-    if (num === 1) return 1;
-    return num + sumRange(num-1);
-}
+//WHEN WRITING RECURSIVE FUNCTIONS, THINK ABOUT:
+// 1. The way to divide prob into subprobs of the same type to find recursve cases
+// 2. Conditions where recursion has to stop to find the base cases
 
-function factorial(num){
-    if (num === 1) return 1;
-    return num * factorial(num-1);
-}
+//RECURSION TREE: 
+// A tree where every node rep one subprob and the relation parent-child means that the parent called the child
+// Draw the root(initial function call), new recursive call(draw a child)
+//eg sum of bst ->   5
+//                /    \
+//               8       1
+//             /   \    /  
+//            3     4   9
+//           /
+//          7
+// Recursion tree on left side:
+//                  sum(5)
+//                22 /
+//              sum(8)
+//              10/   \4
+//             sum(3)   sum(4)
+//             7/   \0
+//            sum(7)  sum(null)
+//            0/
+//          sum(null)
 
-factorial(4);
 
 //recursion is mainly used as a helper function
 // a helper method recursion is a pattern with an outer function that's not recursive
@@ -67,26 +73,4 @@ function collectAllOddValues(arr){
 }
 collectAllOddValues([1,2,3,4,5,6,7,8,9]);
 
-function fibonacci(num){
-    //is too slow - O(2^n)
-   // 0,1,1,2,3,5,8,13
-   //num-1 + num-2
-   if(num === 0) return 0;
-   else if (num === 1) return 1;
-   else return fibonacci(num-1) + fibonacci(num-2);
-}
-
-//efficient fibonacci
-function fib(num){
-    let fib = [0,1];
-    for(let i=2; i<num; i++){
-        fib.push(fib[i-1] + fib[i-2]);
-    }
-    return fib;
-}
-
-function sumOfDigits(num){
-    //eg 142 => 1,4,2 => 7
-    return (num % 10) + sumOfDigits((num%10 - 1));
-}
 

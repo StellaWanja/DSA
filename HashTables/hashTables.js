@@ -10,7 +10,7 @@
 //• Caching/memorizing data instead of making your server do work
 // eg in caching to easily retrieve data
 
-//hash function ->  a function that converts keys into valid array indices, to be able to look up values by kry
+//hash function ->  a function that converts keys into valid array indices, to be able to look up values by key
 //what makes a good hash
 // 1. Needs to be fast(constant time)
 // 2. Doesn't cluster outputs at specific indices, but distributes uniformly
