@@ -1,22 +1,24 @@
-//collision -> two keys have been assigned the same slot
-//strategies for dealing with collision
-// 1. Separate chaining
-// at each index in array we store values using a data structure eg linked list or array
-// this allows to store multiple key-value pairs at the same index
-// 2. Linear probing
-// when we find a collision, we search through the array to find the next empty slot
-// this allows us to store single key-value pairs at each index
-
-// in separate chaining, will use get and set
-// in a set ->
-// 1. Accepts a key and a value
-// 2. Hashes the key
-// 3. Stores the key-value pair in the hash table array via separate chaining
-// in a get ->
-// 1. Accepts a key
-// 2. Hashes the key
-// 3. Retrieves the key-value pair in the hash table
-// 4. If the key isn't found, returns undefined
+/** COLLISION 
+    -> happens when two keys have been assigned the same slot
+    -> strategies for dealing with collision
+      1. Separate chaining
+        -> at each index in array we store values using a data structure eg linked list or array
+        -> this allows to store multiple key-value pairs at the same index
+      2. Linear probing/ open addressing
+        -> when we find a collision, we search through the array to find the next empty slot
+        -> this allows us to store single key-value pairs at each index
+*/
+/* in separate chaining, will use get and set
+   - in a set ->
+    1. Accepts a key and a value
+    2. Hashes the key
+    3. Stores the key-value pair in the hash table array via separate chaining
+   - in a get ->
+    1. Accepts a key
+    2. Hashes the key
+    3. Retrieves the key-value pair in the hash table
+    4. If the key isn't found, returns undefined
+*/
 class HashTable {
   //size of hashtable -> 53
   constructor(size = 53) {

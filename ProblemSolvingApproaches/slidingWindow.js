@@ -7,6 +7,12 @@
     3. Used in questions such as in finding min and max of something, longest, shortest or largest thing, or if something is contained in a string/array
 */
 
+/** HOW IT WORKS
+    1. Initialize pointers left and right
+    2. Expand the window -> move right pointer to right while ensuring the condition is still satisified
+    3. Contract the window -> move left pointer to right if a condition is violated
+ */
+
 /** QUESTION VARIANTS
     1. Fixed length
         -> eg find the max sum of a subarray of size k

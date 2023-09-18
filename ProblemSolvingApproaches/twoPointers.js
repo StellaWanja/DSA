@@ -1,7 +1,18 @@
 /** Involves creating pointers or values that correspond to an index or position
  *  and move towards the beginning, end or middle based on a certain condition
  - Very efficient for solving problems with minimal space complexity 
+ - works in a sorted array
 */
+/** COMMON PATTERNS IN THE TWO POINTER TECHNIQUE
+    1. Two pointers, each starting from the beginning and the end until they both meet
+     -> This variation is often used in scenarios where you need to find a pair of elements 
+     -> that satisfy a certain condition eg finding two elements that sum up to a target value in a sorted array
+    2. Two pointers moving in parallel.
+     -> This variation is useful when you need to track elements based on some criteria while iterating through the array
+    3. Two pointers with sorting
+     -> first need to sort the array before applying the two-pointer technique
+     ->  useful when searching for pairs or solving problems involving subarrays.
+ */
 
 /**
  * eg Write a function called sumZero which accepts a sorted array of integers.
