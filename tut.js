@@ -84,4 +84,39 @@ const firstRecurringNum = (arr) => {
 
 console.log(firstRecurringNum([2,5,1,3,2,5,3]));
 
+function merge(arr1,arr2){
+    let res = [];
+    let leftId = 0;
+    let rightId = 0;
+
+    while(leftId < arr1.length && rightId < arr2.length){
+        if(arr1[leftId] < arr2[rightId]){
+            res.push(arr1[leftId]);
+            leftId++;
+        } else {
+            res.push(arr2[rightId]);
+            rightId++;
+        }
+    }
+
+    while(leftId < arr1.length){
+        res.push(arr1[leftId]);
+        leftId++;
+    }
+    while(rightId < arr2.length){
+        res.push(arr2[rightId]);
+        rightId++;
+    }
+    return res;
+}
+
+function mergeSort(arr){
+    if(arr.length <= 1) return arr;
+    let mid = Math.floor(arr.length/2);
+    let leftArr = mergeSort(arr.slice(0,mid));
+    let rightArr = mergeSort(arr.slice(mid));
+    return merge(leftArr,rightArr);
+}
+
+console.log(mergeSort([4,8,2,1,5,7,6,3]));
 
