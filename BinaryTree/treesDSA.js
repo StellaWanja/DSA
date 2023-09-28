@@ -23,3 +23,40 @@
         interviewer is usually looking for a solution which runs faster than O(n)
     -> be very familiar with writing pre-order, in-order, and post-order traversal recursively and iteratively
  */
+
+/** TIME AND SPACE COMPLEXITY
+    -> Access - O(log n)
+    -> Search - O(log n)
+    -> Insert - O(log n)
+    -> Remove - O(log n)
+    -> Space complexity is dependent on amount of nodes you need to traverse
+    -> Space complexity of traversing balanced trees is O(h) where h is the height of the tree
+    -> Space complexity of traversing skewed trees (which is essentially a linked list) will be O(n)
+ */
+
+/** EDGE CASES
+    1. Empty tree
+    2. Single node
+    3. Two nodes
+    4. Very skewed tree (like a linked list)
+ */
+
+/** COMMON ROUTINES
+    1. Insert value
+    2. Delete value
+    3. Count number of nodes in tree
+    4. Whether a value is in the tree
+    5. Calculate height of the tree
+    6. Binary search tree
+        a) Determine if it is a binary search tree
+        b) Get maximum value
+        c) Get minimum value
+ */
+
+/** TECHNIQUES
+    1. Use recursion
+    2. Traversing by level -> USE BFS
+    3. Summation of nodes -> check whether nodes can be negative
+ */
+
+

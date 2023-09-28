@@ -8,31 +8,31 @@ class BinaryTreeNode{
     }
 }
 
-//A Tree Data Structure can be traversed in following ways:
-//1. Depth First Search or DFS
-//   a) Inorder Traversal
-//   b) Preorder Traversal
-//   c) Postorder Traversal
-//2. Level Order Traversal or Breadth First Search or BFS
-//3. Boundary Traversal
-//4. Diagonal Traversal
+/** TREE TRAVERSAL:
+      1. Depth First Search/ DFS
+         a) Inorder Traversal
+         b) Preorder Traversal
+         c) Postorder Traversal
+      2. Level Order Traversal/ Breadth First Search or BFS
+      3. Boundary Traversal
+      4. Diagonal Traversal
+*/
 
-//Space complexity is dependent on amount of nodes you need to traverse
 
-// BREADTH FIRST TRAVERSAL
-// Traverse across first before traversing to the children (level order)
-// a) Iteration method for breadth first traversal
-// uses queue data structure to traverse - FIFO
-//           A
-//          /  \
-//         B    C
-//       /  \    \
-//      D   E     F
-// add A to queue and remove
-// then traverse and add B and C to the queue
-// remove B and C from the queue respectively
-// add D, E and F and remove them respectively
-// will be a,b,c,d,e,f
+/** BREADTH FIRST TRAVERSAL - ITERATIVE METHOD
+    -> Traverse across first before traversing to the children (level order)
+          -> uses queue data structure to traverse - FIFO
+                      A
+                    /  \
+                  B    C
+                /  \    \
+                D   E     F
+          -> add A to queue and remove
+          -> then traverse and add B and C to the queue
+          -> remove B and C from the queue respectively
+          -> add D, E and F and remove them respectively
+          -> will be a,b,c,d,e,f
+*/
 
 const breadthFirstTraversal = (root) => {
     if (root === null) return [];
@@ -47,8 +47,9 @@ const breadthFirstTraversal = (root) => {
     return result;
 };
 
-// b) Recursion method for BFS
-// N.B -> BFS has no recursion since recursion requires using a call stack (stack dsa) and BFS uses a queue
+/** BREADTH FIRST TRAVERSAL - RECURSIVE METHOD
+    N.B -> BFS has no recursion since recursion requires using a call stack (stack dsa) and BFS uses a queue
+*/
 
 //DEPTH FIRST TRAVERSAL
 // Traverse from root to left node and all its children before moving to the right node
