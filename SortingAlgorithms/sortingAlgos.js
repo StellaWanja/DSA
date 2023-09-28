@@ -32,3 +32,15 @@
     7. Counting sort -> O(n+k) time, O(k) space
     8. Radix sort -> O(nk) time, O(n+k) space => n-length of list/arr, k-length of the numbers
 */
+
+/** EDGE CASES
+    1. Empty sequence
+    2. Sequence with one element
+    3. Sequence with two elements
+    4. Sequence containing duplicate elements
+ */
+
+/** TECHNIQUES
+    1. Sorted inputs (use binary search)
+    2. Sorting an input that has limited range
+ */

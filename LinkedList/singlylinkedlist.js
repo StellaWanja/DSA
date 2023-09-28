@@ -28,7 +28,7 @@ class LinkedList{
         }
     }
 
-    //insert last node - o(1)
+    //insert last node - o(1) if tail value is held, else O(n) if traversing
     insertLastNode(data){
         let newNode = new Node(data);
         let temp ;
