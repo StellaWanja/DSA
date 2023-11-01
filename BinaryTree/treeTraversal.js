@@ -51,22 +51,23 @@ const breadthFirstTraversal = (root) => {
     N.B -> BFS has no recursion since recursion requires using a call stack (stack dsa) and BFS uses a queue
 */
 
-//DEPTH FIRST TRAVERSAL
-// Traverse from root to left node and all its children before moving to the right node
-// a) Iteration method for depth first traversal
-// uses stack data structure style to traverse - LIFO
-//           A
-//          /  \
-//         B    C
-//       /  \    \
-//      D   E     F
-// First A will be pushed to the stack and popped out
-// Then B and C will be pushed to the stack in the order of C and B(right node then left node)
-// B will be popped out, then traverse its children D and E
-// E will be pushed to stack first then D, and pop out D then E respectively
-// then go back to remaining C in the stack and pop it out
-// then traverse to F and pop
-// So traversal in depth first = A,B,D,E,C,F
+/** DEPTH FIRST TRAVERSAL
+ -> Traverse from root to left node and all its children before moving to the right node
+ -> a) Iteration method for depth first traversal
+ -> uses stack data structure style to traverse - LIFO
+              A
+             /  \
+            B    C
+         /  \    \
+        D   E     F
+ -> First A will be pushed to the stack and popped out
+ -> Then B and C will be pushed to the stack in the order of C and B(right node then left node)
+ -> B will be popped out, then traverse its children D and E
+ -> E will be pushed to stack first then D, and pop out D then E respectively
+ -> then go back to remaining C in the stack and pop it out
+ -> then traverse to F and pop
+ -> So traversal in depth first = A,B,D,E,C,F
+*/
 const depthFirstTraversal = (root) => {
     if (root === null) return [];
   
@@ -91,15 +92,17 @@ const depthFirstTraversalRecursion = (root) => {
     return [root.data, ...leftValues, ...rightValues];
 };
 
-// 1) PREORDER TRAVERSAL (Root, Left, Right) - similar to the DFS methods shown above
-// Traverse from the root to the left subtree then to the right subtree
-//           A
-//          /  \
-//         B    C
-//       /  \  / \
-//      D   E  F  G
-//Traversal = A,B,D,E,C,F,G
-//used to create a copy of the tree and to get prefix expressions on an expression tree
+/** 1) PREORDER TRAVERSAL (Root, Left, Right) - similar to the DFS methods shown above
+  -> Traverse from the root to the left subtree then to the right subtree
+              A
+             /  \
+            B    C
+          /  \  / \
+         D   E  F  G
+  Traversal = A,B,D,E,C,F,G
+  ->used to create a copy of the tree and to get prefix expressions on an expression tree
+*/
+
 const preOrderTraversal = (root) => {
     if(root === null) return null;
     let result = [];
@@ -120,15 +123,17 @@ const preOrder = (root) => {
     preOrder(root.right);
 };
 
-// 2) POSTORDER TRAVERSAL (Left, Right, Root)
-// Traverse from the left subtree to the right subtree then to the root
-//           A
-//          /  \
-//         B    C
-//       /  \  / \
-//      D   E  F  G
-//Traversal = D,E,B,F,G,C,A
-//used to delete the tree and to get the postfix expression of an expression tree
+/* 2) POSTORDER TRAVERSAL (Left, Right, Root)
+  -> Traverse from the left subtree to the right subtree then to the root
+             A
+            /  \
+           B    C
+         /  \  / \
+        D   E  F  G
+  Traversal = D,E,B,F,G,C,A
+  -> used to delete the tree and to get the postfix expression of an expression tree
+*/
+
 const postOrderTraversal = (root) => {
     if(root === null) return null;
     let result = [];
@@ -150,15 +155,17 @@ const postOrder = (root) => {
 }
   
 
-// 3) INORDER TRAVERSAL (Left, Root, Right)
-// Traverse from the left subtree to the root then to the right subtree
-//           A
-//          /  \
-//         B    C
-//       /  \  / \
-//      D   E  F  G
-//Traversal = D,B,E,A,F,C,G
-//used to get nodes in non-decreasing order, can be reversed to get in non-increasing order
+/* 3) INORDER TRAVERSAL (Left, Root, Right)
+   Traverse from the left subtree to the root then to the right subtree
+             A
+            /  \
+           B    C
+         /  \  / \
+        D   E  F  G
+  Traversal = D,B,E,A,F,C,G
+  -> used to get nodes in non-decreasing order, can be reversed to get in non-increasing order
+*/
+
 const inOrderTraversal = (root) => {
     if(root === null) return null;
     let result = [];
@@ -195,16 +202,18 @@ var inorderTraversal = function(root) {
   return res;
 };
 
-//BOUNDARY TRAVERSAL
-// Traverse in a clockwise or anticlockwise manner throughout the tree
-// In an anticlockwise manner - start from root and traverse across all left then right
-//            A
-//          /  \
-//         B    C
-//       /  \    \
-//      D   E     F
-// will be anticlockwise - A,B,D,E,F,C,A
-//anticlockwise : -start from left excluding leaf, then leaf nodes, then right in reverse excluding leaf
+/*BOUNDARY TRAVERSAL
+   Traverse in a clockwise or anticlockwise manner throughout the tree
+   In an anticlockwise manner - start from root and traverse across all left then right
+              A
+            /  \
+           B    C
+         /  \    \
+        D   E     F
+   will be anticlockwise - A,B,D,E,F,C,A
+  anticlockwise : -start from left excluding leaf, then leaf nodes, then right in reverse excluding leaf
+*/
+
 class BoundaryTraversal{
     //print leaf nodes
     printLeaves(root){ 

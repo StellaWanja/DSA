@@ -12,7 +12,7 @@ class BinarySearchTreeFind{
   constructor(){
     this.root = null;
   }
-  find(val){
+  iterativeFind(val){
     if(this.root === null) return false;
     let current = this.root;
     let foundVal = false;
@@ -31,5 +31,16 @@ class BinarySearchTreeFind{
     }
     if(foundVal === false) return undefined;
     return current;
+  }
+  
+  recursiveFind(val){
+    if(this.root === null) return false;
+    else this.searchNode(this.root, val);
+  }
+  searchNode(root, val){
+    if(root.data === val) return true;
+    else if(val < root.data) return this.searchNode(root.left, val);
+    else if(val > root.data) return this.searchNode(root.right, val);
+    else return false;
   }
 }

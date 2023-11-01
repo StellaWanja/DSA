@@ -1,6 +1,7 @@
 // binary search only works on sorted array
 // Big O worst & average case -> O(log n), best case -> O(1)
-
+// SPace complexity - O(log n) - for the recursive approach consumes memory on the stack.
+// Space complexity - O(1) - iterative approach
 
 const binarySearch = (arr, val) => {
     let leftPointer = 0;
